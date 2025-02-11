@@ -8,8 +8,57 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Contact Us</h1>
+    <nav>
+      <h1>Health Analysis Census</h1>
 
-    <script src="./health_analysis.json"></script>
+      <ul>
+        <li><a href="./index.html" id="home">Home</a></li>
+        <li><a href="./health_contant.html" id="contact">Contact Us</a></li>
+        <li>
+          <input
+            type="text"
+            id="conditionInput"
+            placeholder="Enter a health condition"
+          />
+        </li>
+        <li><button id="btnSearch">Search</button></li>
+      </ul>
+    </nav>
+
+    <h1>Contact Us</h1>
+    <p>
+      Feel free to contact us to know more about your conditions and for
+      treatment methods.
+    </p>
+
+    <form id="contactForm">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+
+      <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+
+      <div>
+        <label for="condition">Condition</label>
+        <input type="text" name="condition" id="condition" required />
+      </div>
+
+      <div>
+        <label for="message">Message</label>
+        <textarea name="Message" id="message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" onclick="thankyou()">Submit</button>
+    </form>
+
+    <script>
+      function thankyou() {
+        alert("Thank you for contacting us!");
+      }
+    </script>
   </body>
 </html>
