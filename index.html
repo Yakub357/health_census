@@ -4,68 +4,117 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- FONT FAMILY -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./style.css" />
     <title>Health Analysis</title>
   </head>
   <body>
-    <nav>
-      <h1>Health Analysis Census</h1>
+    <header>
+      <div class="container">
+        <nav>
+          <h1>Health Analysis Census</h1>
 
-      <ul>
-        <li><a href="./index.html" id="home">Home</a></li>
-        <li><a href="./health_contant.html" id="contact">Contact Us</a></li>
-        <li>
-          <input
-            type="text"
-            id="conditionInput"
-            placeholder="Enter a health condition"
-          />
-        </li>
-        <li><button id="btnSearch">Search</button></li>
-      </ul>
-    </nav>
-
-    <div class="container">
-      <div class="analysisForm">
-        <h2>HealthCare Data Analysis</h2>
-
-        <div>
-          <label for="name">Name: </label>
-          <input type="text" id="name" />
-        </div>
-
-        <div>
-          <label>Gender</label>
-          <label for="male">Male</label>
-          <input type="radio" name="gender" id="male" value="Male" />
-          <label for="female">Female</label>
-          <input type="radio" name="gender" id="female" value="Female" />
-        </div>
-
-        <div>
-          <label for="age">Age: </label>
-          <input type="number" id="age" />
-        </div>
-
-        <div>
-          <label for="condition">Condition:</label>
-          <select id="condition">
-            <option value="">Select condition</option>
-            <option value="Diabetes">Diabetes</option>
-            <option value="Thyroid">Thyroid</option>
-            <option value="High Blood Pressure">High Blood Pressure</option>
-          </select>
-        </div>
-
-        <h2>Analysis Report</h2>
-        <div id="report"></div>
-        <button id="addPatient">Add Patient</button>
+          <ul>
+            <li>
+              <a href="./index.html" id="home">Home </a>
+            </li>
+            <li>
+              <a href="./health_contant.html" id="contact">Contact Us </a>
+            </li>
+            <li>
+              <input
+                type="text"
+                id="conditionInput"
+                placeholder="/ Enter health condition"
+              />
+            </li>
+            <li><button id="btnSearch">Search</button></li>
+          </ul>
+        </nav>
       </div>
+    </header>
 
-      <div class="searchCondition">
-        <div id="result"></div>
+    <main>
+      <div class="container">
+        <div class="card analysisForm">
+          <h2 class="card__title">HealthCare Data Analysis</h2>
+
+          <div class="card__main">
+            <div class="card__input">
+              <h3 class="card__heading">Patient Data</h3>
+
+              <div>
+                <label for="name">Name: </label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Enter Patient Name"
+                  required
+                />
+              </div>
+
+              <div class="card__input-wrapper">
+                <div>
+                  <label for="age">Age: </label>
+                  <input type="number" id="age" />
+                </div>
+
+                <div>
+                  <label>Gender</label>
+                  <label for="male">Male</label>
+                  <input type="radio" name="gender" id="male" value="Male" />
+                  <label for="female">Female</label>
+                  <input
+                    type="radio"
+                    name="gender"
+                    id="female"
+                    value="Female"
+                  />
+                </div>
+
+                <div>
+                  <label for="condition">Condition:</label>
+                  <select id="condition">
+                    <option value="">Select condition</option>
+                    <option value="Diabetes">Diabetes</option>
+                    <option value="Thyroid">Thyroid</option>
+                    <option value="High Blood Pressure">
+                      High Blood Pressure
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <button id="addPatient">Add Patient</button>
+            </div>
+            <div class="card__output">
+              <h3 class="card__heading">Analysis Report</h3>
+              <div id="report"></div>
+            </div>
+          </div>
+
+          <!-- <h2>Analysis Report</h2> -->
+        </div>
+
+        <div class="searchCondition">
+          <div id="result"></div>
+        </div>
       </div>
-    </div>
+    </main>
+
+    <footer>
+      <div class="container">
+        Designed and Developed by
+        <a href="https://github.com/Yakub357" target="_blank">CodingJack</a>
+      </div>
+    </footer>
 
     <script src="./healt_analysis.js"></script>
   </body>
