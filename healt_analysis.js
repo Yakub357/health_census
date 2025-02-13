@@ -65,12 +65,18 @@ function resetForm() {
 }
 
 function generateReport() {
+  report.classList.remove("empty");
+  report.innerHTML = "";
+
   const numPatients = patients.length;
   const conditionsCount = {
     Diabetes: 0,
     Thyroid: 0,
     "High Blood Pressure": 0,
   };
+
+  let reportBreakDownContent = "";
+  let genders = [];
 
   const genderConditionsCount = {
     Male: {
@@ -90,17 +96,55 @@ function generateReport() {
     genderConditionsCount[patient.gender][patient.condition]++;
   }
 
-  report.innerHTML = `Number of patients: ${numPatients} <br><br>`;
-  report.innerHTML += `Conditions Breakdown: <br>`;
   for (const condition in conditionsCount) {
-    report.innerHTML += `${condition}: ${conditionsCount[condition]} <br>`;
+    reportBreakDownContent += `<p>${condition}: <span>${conditionsCount[condition]}</span></p>  `;
   }
 
-  report.innerHTML += `<br>Gender-Based Conditions: <br>`;
   for (const gender in genderConditionsCount) {
+    genders.push(gender);
+
     report.innerHTML += `${gender}: <br>`;
     for (const condition in genderConditionsCount[gender]) {
       report.innerHTML += `&nbsp;&nbsp;${condition}: ${genderConditionsCount[gender][condition]}<br>`;
     }
   }
+
+  // report.innerHTML = `Number of patients: ${numPatients} <br><br>`;
+  // report.innerHTML += `Conditions Breakdown: <br>`;
+
+  report.innerHTML = `<h3 class="report__count">Patients: ${numPatients}</h3>`;
+  report.innerHTML += `
+    <div class="report__breakdown">
+      <h4 h4 class="report__heading">Condition Breakdown</h4>
+      <div class="report__content">
+        ${reportBreakDownContent}
+      </div>
+    </div>
+
+    <div class="report__conditions">
+      <h4 class="report__heading">Gender-based Conditions</h4>
+      <div class="report__conditions--sub">
+        
+        <div>
+          <h4 class="report__heading">${genders}</h4>
+          <div class="report__content">
+            <p>Diabetes: <span>1</span></p>
+            <p>Thyroid: <span>0</span></p>
+            <p>High Blood Pressure: <span>0</span></p>
+          </div>
+        </div>
+
+        <div>
+          <h4 class="report__heading">Male</h4>
+          <div class="report__content">
+            <p>Diabetes: <span>1</span></p>
+            <p>Thyroid: <span>0</span></p>
+            <p>High Blood Pressure: <span>0</span></p>
+            </div>
+          </div>
+        </div>
+    </div>
+  `;
+
+  // report.innerHTML += `<br>Gender-Based Conditions: <br>`;
 }
