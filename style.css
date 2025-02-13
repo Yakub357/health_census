@@ -28,6 +28,47 @@ header {
   background-color: #00a4e4;
 }
 
+input[type="text"],
+input[type="number"] {
+  font-family: "Noto Sans", sans-serif;
+  color: #000;
+  border-radius: 4px;
+  border: 2px solid #00a4e4;
+  background-color: #fff;
+}
+
+input[type="text"]:placeholder-shown,
+input[type="number"]:placeholder-shown {
+  border-color: transparent;
+  background-color: #d9d9d9;
+}
+
+input[type="text"]:focus,
+input[type="number"] {
+  outline: none;
+  border-color: #00a4e4;
+  background-color: #fff;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/*  */
+/* Removing the arrows from input[type="number"] */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 main {
   flex-grow: 1;
 
@@ -158,7 +199,7 @@ footer a:hover {
   margin: 2rem auto 0 auto;
 
   padding: 1rem;
-  border-radius: 32px;
+  border-radius: 16px;
   border: 1px solid #00a4e4;
   background-color: #fff;
 
@@ -189,7 +230,7 @@ footer a:hover {
 .card__input,
 .card__output {
   width: 100%;
-  max-width: 18rem;
+  max-width: 20rem;
 
   display: flex;
   flex-direction: column;
@@ -207,7 +248,10 @@ footer a:hover {
 
 .card__input div {
   width: 100%;
+}
 
+.card__input--name,
+.card__input--age {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -219,26 +263,155 @@ footer a:hover {
   width: 80%;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 2px solid #00a4e4;
 
-  background-color: #fff;
+  font-size: 0.75rem;
+}
+
+.card__input-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.card__input-wrapper div input[type="number"] {
+  max-width: 3.5rem;
+  padding: 0.25rem 0.5rem;
+
+  font-size: 1rem;
+  line-height: 100%;
+  text-align: right;
+}
+
+.card__input--gender {
+  flex-grow: 1;
+  width: 4.5rem;
+}
+
+.card__input--condition {
+  label {
+    display: none;
+  }
+
+  max-width: 8rem;
+}
+
+.card__btn {
+  margin-top: 3rem;
+  align-self: center;
+
+  width: 100%;
+  max-width: 10rem;
+  padding: 0.5rem;
+
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: #00a4e4;
 
   font-family: "Noto Sans", sans-serif;
-  font-size: 0.75rem;
-  color: #000;
+  line-height: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.card__input div input[type="text"]:placeholder-shown {
-  border-color: transparent;
-  background-color: #d9d9d9;
-}
-
-.card__input div input[type="text"]::placeholder {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-.card__input div input[type="text"]:focus {
-  outline: none;
-  border-color: #00a4e4;
+.card__btn:hover {
   background-color: #fff;
+  color: #00a4e4;
+  border-color: #00a4e4;
+}
+
+/* */
+/* ==== ==== CARD OUTPUT ==== ====*/
+.card__output {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+.card__output--wrapper {
+  width: 100%;
+  max-width: 18rem;
+  min-height: 16rem;
+  padding: 0.5rem 1rem;
+
+  border-radius: 4px;
+  border: 1px solid #00a4e4;
+  background: rgba(0, 164, 228, 0.2);
+}
+
+.card__output--wrapper:has(.empty) {
+  background-image: url("./imgs/person-icon.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.report {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  .report__count {
+    align-self: flex-end;
+  }
+}
+
+.report__count {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 100%;
+}
+
+.report__breakdown {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.25rem;
+}
+
+.report__heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  line-height: 100%;
+}
+
+.report__content {
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+
+  p {
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 100%;
+
+    letter-spacing: -0.2px;
+
+    span {
+      /* margin-left: 0.5rem; */
+      font-weight: 700;
+    }
+  }
+}
+
+.report__conditions {
+  margin-top: 0.5rem;
+}
+
+.report__conditions--sub {
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
 }
